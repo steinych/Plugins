@@ -42,19 +42,15 @@ mob-groups:
     - SHEEP
     - PIG
 
-
 biome-groups:
-  taigas:
-    - TAIGA
-    - TAIGA_MOUNTAINS
-    - SNOWY_TUNDRA
+  cold_biomes:
+    - SNOWY_BEACH
+    - SNOWY_PLAINS
+    - SNOWY_SLOPES
     - SNOWY_TAIGA
-    - SNOWY_TAIGA_HILLS
-    - GIANT_TREE_TAIGA
-    - GIANT_SPRUCE_TAIGA
-    - GIANT_SPRUCE_TAIGA_HILLS
-    - GIANT_TREE_TAIGA_HILLS
-    - SNOWY_TAIGA_MOUNTAINS
+    - FROZEN_OCEAN
+    - FROZEN_PEAKS
+    - FROZEN_RIVER
   flowers:
     - FLOWER_FOREST
     - SUNFLOWER_PLAINS
@@ -276,20 +272,20 @@ presets:
       minLevel: 1
       maxLevel: 100
       multipliers:
-        max-health: 15.0
+        max-health: 5.0
         movement-speed: 1.0
-        attack-damage: 5.0
-        ranged-attack-damage: 4.0
-        creeper-blast-damage: 2.5
+        attack-damage: 2.5
+        ranged-attack-damage: 2.0
+        creeper-blast-damage: 1.5
         follow-range: 0.5
-        item-drop: 3
+        item-drop: 5
         xp-drop: 5
         #       Special Multipliers (0.0 Min - 1.0 Max)
-        armor-bonus: 0.5
-        armor-toughness: 0.5
-        attack-knockback: 0.5
-        knockback-resistance: 0.5
-        zombie-spawn-reinforcements: 0.15
+        armor-bonus: 0.1
+        armor-toughness: 0.1
+        attack-knockback: 0.1
+        knockback-resistance: 0.1
+        zombie-spawn-reinforcements: 0.5
 
       tiered-coloring:
         1-19: '&#22E76B' #Green
@@ -439,16 +435,30 @@ custom-rules:
       maxLevel: 0
 
   - enabled: true
-    name: 'CR - Custom Nether Levelling'
-    use-preset: apply_LevellingVariance
+    name: 'Custom End Levelling'
     conditions:
-      worlds:
-        allowed-list: [ 'world_nether' ]
+      worlds: 'world_the_end'
     strategies:
-      y-coordinate:
-        start: 100
-        end: 40
-        period: 0
+      distance-from-spawn:
+        increase-level-distance: 200
+        start-distance: 1000
+        spawn-location:
+          x: 0
+          z: 0
+     apply-settings:
+       minLevel: 25
+       maxLevel: 100
+
+  - enabled: true
+     name: 'Custom Entity Specific Levelling'
+     use-preset: extreme_challenge
+     conditions:
+      entities: ['ZOMBIFIED_PIGLIN', 'SHULKER', 'VEX', 'RAVAGER', 'PHANTOM', 'PILLAGER']
+     strategies:
+      weighted-random: true
+     apply-settings:
+      minLevel: 25
+      maxLevel: 100
 
   - enabled: true
     name: 'CR - Custom Entity Attributes'
@@ -491,45 +501,60 @@ custom-rules:
       tiered-coloring:
         1-5: '&#22E76B' #Green
 
-- enabled: true
-   name: 'Drop Tables for LVL1-25'
-   conditions:
+  - enabled: true
+    name: 'Drop Tables for LVL1-25'
+    conditions:
      entities:
        allowed-list: ['ZOMBIE', 'SKELETON', 'HUSK', 'DROWNED']
      minLevel: 1
      maxLevel: 25
-   apply-settings:
+    apply-settings:
      use-droptable-id: tier_c_weapons, tier_c_armor
 
- - enabled: true
-   name: 'Drop Tables for LVL26-50'
-   conditions:
+  - enabled: true
+    name: 'Drop Tables for LVL26-50'
+    conditions:
      entities:
        allowed-list: ['ZOMBIE', 'SKELETON', 'HUSK', 'DROWNED', 'ZOMBIFIED_PIGLIN', 'PIGLIN']
      minLevel: 26
      maxLevel: 50
-   apply-settings:
+    apply-settings:
      use-droptable-id: tier_b_weapons, tier_b_armor 
 
- - enabled: true
-   name: 'Drop Tables for LVL51-75'
-   conditions:
+  - enabled: true
+    name: 'Drop Tables for LVL51-75'
+    conditions:
      entities:
-       allowed-list: ['ZOMBIE', 'SKELETON', 'HUSK', 'DROWNED', 'ZOMBIFIED_PIGLIN', 'PIGLIN']
+       allowed-list: ['ZOMBIE', 'SKELETON', 'HUSK', 'DROWNED', 'ZOMBIFIED_PIGLIN', 'PIGLIN', 'ENDERMAN']
      minLevel: 51
      maxlevel: 75
-   apply-settings:
+    apply-settings:
      use-droptable-id: tier_a_weapons, tier_a_armor, , enchanted_book-aqua_affinity-1, enchanted_book-bane_of_arthropods-1_5, enchanted_book-blast_protection-1_4, enchanted_book-channeling-1, enchanted_book-curse_of_binding-1, enchanted_book-curse_of_vanishing-1, enchanted_book-depth_strider-1_3, enchanted_book-efficiency-1_5, enchanted_book-feather_falling-1_4, enchanted_book-fire_aspect-1_2, enchanted_book-fire_protection-1_4, enchanted_book-flame-1, enchanted_book-fortune-1_3, enchanted_book-frost_walker-1_2, enchanted_book-impaling-1_5, enchanted_book-infinity-1, enchanted_book-knockback-1_2, enchanted_book-looting-1_3, enchanted_book-loyalty-1_3, enchanted_book-luck_of_the_sea-1_3, enchanted_book-lure-1_3, enchanted_book-mending-1, enchanted_book-multishot-1, enchanted_book-piercing-1_4, enchanted_book-power-1_5, enchanted_book-projectile_protection-1_4, enchanted_book-protection-1_4, enchanted_book-punch-1_2, enchanted_book-quick_charge-1_3, enchanted_book-respiration-1_3, enchanted_book-riptide-1_3, enchanted_book-sharpness-1_5, enchanted_book-silk_touch-1, enchanted_book-smite-1_5, enchanted_book-soul_speed-1_3, enchanted_book-sweeping_edge-1_3, enchanted_book-thorns-1_3, enchanted_book-unbreaking-1_3 
 
- - enabled: true
-   name: 'Drop Tables for LVL76-100'
-   conditions:
+  - enabled: true
+    name: 'Drop Tables for LVL76-100'
+    conditions:
      entities:
-       allowed-list: ['ZOMBIFIED_PIGLIN', 'PIGLIN']
+       allowed-list: ['ZOMBIFIED_PIGLIN', 'PIGLIN', 'ENDERMAN']
      minLevel: 76
      maxlevel: 100
-   apply-settings:
+    apply-settings:
       use-droptable-id: tier_s_weapons, tier_s_armor, , enchanted_book-aqua_affinity-1, enchanted_book-bane_of_arthropods-1_5, enchanted_book-blast_protection-1_4, enchanted_book-channeling-1, enchanted_book-curse_of_binding-1, enchanted_book-curse_of_vanishing-1, enchanted_book-depth_strider-1_3, enchanted_book-efficiency-1_5, enchanted_book-feather_falling-1_4, enchanted_book-fire_aspect-1_2, enchanted_book-fire_protection-1_4, enchanted_book-flame-1, enchanted_book-fortune-1_3, enchanted_book-frost_walker-1_2, enchanted_book-impaling-1_5, enchanted_book-infinity-1, enchanted_book-knockback-1_2, enchanted_book-looting-1_3, enchanted_book-loyalty-1_3, enchanted_book-luck_of_the_sea-1_3, enchanted_book-lure-1_3, enchanted_book-mending-1, enchanted_book-multishot-1, enchanted_book-piercing-1_4, enchanted_book-power-1_5, enchanted_book-projectile_protection-1_4, enchanted_book-protection-1_4, enchanted_book-punch-1_2, enchanted_book-quick_charge-1_3, enchanted_book-respiration-1_3, enchanted_book-riptide-1_3, enchanted_book-sharpness-1_5, enchanted_book-silk_touch-1, enchanted_book-smite-1_5, enchanted_book-soul_speed-1_3, enchanted_book-sweeping_edge-1_3, enchanted_book-thorns-1_3, enchanted_book-unbreaking-1_3
+  
+  - enabled: true
+    name: 'Spawner Cube Entities'
+    use-preset: basic_challenge
+    conditions:
+      allowed-spawn-reasons: ['SPAWNER']
+    strategies:
+      weighted-random: true
+    apply-settings:
+      maxLevel: 5
+      multipliers:
+        max-health: 0.0 #For Farms
+      entity-name-override:
+        all_entities: 'Spawner %displayname%'
+
 # +-------------------------------------------------------------------------------------------LM3
 # +                                                                                          +LM3
 # +   Section 05 - Advanced Message Settings                                                 +LM3
