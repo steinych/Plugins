@@ -421,17 +421,16 @@ default-rule:
 # +   check for, then set either a STRATEGY or APPLY-SETTINGS when the CONDITION is met.     +LM3
 # +   If you need help understanding CUSTOM RULES, read the official LevelledMobs Wiki!      +LM3
 # +   https://github.com/lokka30/LevelledMobs/wiki/Documentation---rules.yml#custom-rules    +LM3
-# +                                                                                          +LM3
-# +-------------------------------------------------------------------------------------------LM3
+# +                                                                                         +M3
+# +------------------------------------------------------------------------------------------LM3
 custom-rules:
-
   - enabled: true
     name: 'No Stat Change for Specific Entities'
     use-preset: vanilla_challenge, nametag_no_level
     conditions:
       entities:
-        allowed-groups: [ 'all_passive_mobs' ]
-        allowed-list: [ 'BABY_', 'WANDERING_TRADER', 'VILLAGER', 'ZOMBIE_VILLAGER', 'BAT' ]
+        allowed-groups: ['all_passive_mobs']
+        allowed-list: ['BABY_', 'WANDERING_TRADER', 'VILLAGER', 'ZOMBIE_VILLAGER', 'BAT']
 
   - enabled: true
     name: 'Custom Nether Levelling'
@@ -578,13 +577,13 @@ custom-rules:
       maxLevel: 100
 
   - enabled: true
-   name: 'Level 1-5 Ring'
-   conditions:
+    name: 'Level 1-5 Ring'
+    conditions:
      min-distance-from-spawn: 0
      max-distance-from-spawn: 100
-   strategies:
+    strategies:
       weighted-random: true
-   apply-settings:
+    apply-settings:
       maxLevel: 5
 
   - enabled: true
