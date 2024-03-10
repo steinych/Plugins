@@ -424,6 +424,7 @@ default-rule:
 # +                                                                                          +LM3
 # +-------------------------------------------------------------------------------------------LM3
 custom-rules:
+
   - enabled: true
     name: 'No Stat Change for Specific Entities'
     use-preset: vanilla_challenge, nametag_no_level
@@ -551,7 +552,6 @@ custom-rules:
     conditions:
      entities:
        allowed-list: ['ZOMBIE', 'SKELETON', 'HUSK', 'DROWNED', 'ZOMBIFIED_PIGLIN', 'PIGLIN']
-
     apply-settings:
       use-droptable-id: simple_tier_b
       minLevel: 26
@@ -576,8 +576,8 @@ custom-rules:
       use-droptable-id: simple_tier_s, enchanted_book-aqua_affinity-1, enchanted_book-bane_of_arthropods-1_5, enchanted_book-blast_protection-1_4, enchanted_book-channeling-1, enchanted_book-curse_of_binding-1, enchanted_book-curse_of_vanishing-1, enchanted_book-depth_strider-1_3, enchanted_book-efficiency-1_5, enchanted_book-feather_falling-1_4, enchanted_book-fire_aspect-1_2, enchanted_book-fire_protection-1_4, enchanted_book-flame-1, enchanted_book-fortune-1_3, enchanted_book-frost_walker-1_2, enchanted_book-impaling-1_5, enchanted_book-infinity-1, enchanted_book-knockback-1_2, enchanted_book-looting-1_3, enchanted_book-loyalty-1_3, enchanted_book-luck_of_the_sea-1_3, enchanted_book-lure-1_3, enchanted_book-mending-1, enchanted_book-multishot-1, enchanted_book-piercing-1_4, enchanted_book-power-1_5, enchanted_book-projectile_protection-1_4, enchanted_book-protection-1_4, enchanted_book-punch-1_2, enchanted_book-quick_charge-1_3, enchanted_book-respiration-1_3, enchanted_book-riptide-1_3, enchanted_book-sharpness-1_5, enchanted_book-silk_touch-1, enchanted_book-smite-1_5, enchanted_book-soul_speed-1_3, enchanted_book-sweeping_edge-1_3, enchanted_book-thorns-1_3, enchanted_book-unbreaking-1_3
       minLevel: 76
       maxLevel: 100
-   - enabled: true
 
+  - enabled: true
    name: 'Level 1-5 Ring'
    conditions:
      min-distance-from-spawn: 0
