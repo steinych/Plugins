@@ -261,11 +261,11 @@ presets:
       maxLevel: 100
       multipliers:
         merge: false
-        max-health: 8.0
-        movement-speed: 1.0
-        attack-damage: 5.0
-        ranged-attack-damage: 3.0
-        creeper-blast-damage: 1.5
+        max-health: 2.0
+        movement-speed: 0.5
+        attack-damage: 2.0
+        ranged-attack-damage: 1.0
+        creeper-blast-damage: 0.5
         follow-range: 0.5
         item-drop: 5.0
         xp-drop: 7.0
@@ -446,26 +446,16 @@ custom-rules:
         maxLevel: 100
 
   - enabled: true
-    name: 'CR - Boss Bar'
-    use-preset: allowed_worlds, nametag_using_indicator
-    apply-settings:
-      health-indicator:
-        scale: 5
-        max: 10
-      nametag: '%health-indicator%'
-
-  - enabled: true
     name: 'CR - Difficulty Increase at Night'
-    use-preset: allowed_worlds, extreme_challenge
+    use-preset: extreme_challenge
     conditions:
       apply-above-y: 62
       world-time-tick: ['13000-24000']
     apply-settings:
-      minLevel: 25
+      minLevel: 15
         
   - enabled: true
     name: 'CR - Level Dependent Zombie Custom Names'
-    use-presets: allowed_worlds
     apply-settings:
       entity-name-override:
         1-25:
@@ -552,7 +542,7 @@ custom-rules:
      entities:
        allowed-list: ['ZOMBIE', 'SKELETON', 'HUSK', 'DROWNED']
     apply-settings:
-      use-droptable-id: tier_c_weapons, tier_c_armor
+      use-droptable-id: simple_tier_c
       minLevel: 1
       maxLevel: 25
 
@@ -563,7 +553,7 @@ custom-rules:
        allowed-list: ['ZOMBIE', 'SKELETON', 'HUSK', 'DROWNED', 'ZOMBIFIED_PIGLIN', 'PIGLIN']
 
     apply-settings:
-      use-droptable-id: tier_b_weapons, tier_b_armor 
+      use-droptable-id: simple_tier_b
       minLevel: 26
       maxLevel: 50
 
@@ -573,7 +563,7 @@ custom-rules:
      entities:
        allowed-list: ['ZOMBIE', 'SKELETON', 'HUSK', 'DROWNED', 'ZOMBIFIED_PIGLIN', 'PIGLIN', 'ENDERMAN']
     apply-settings:
-      use-droptable-id: tier_a_weapons, tier_a_armor, , enchanted_book-aqua_affinity-1, enchanted_book-bane_of_arthropods-1_5, enchanted_book-blast_protection-1_4, enchanted_book-channeling-1, enchanted_book-curse_of_binding-1, enchanted_book-curse_of_vanishing-1, enchanted_book-depth_strider-1_3, enchanted_book-efficiency-1_5, enchanted_book-feather_falling-1_4, enchanted_book-fire_aspect-1_2, enchanted_book-fire_protection-1_4, enchanted_book-flame-1, enchanted_book-fortune-1_3, enchanted_book-frost_walker-1_2, enchanted_book-impaling-1_5, enchanted_book-infinity-1, enchanted_book-knockback-1_2, enchanted_book-looting-1_3, enchanted_book-loyalty-1_3, enchanted_book-luck_of_the_sea-1_3, enchanted_book-lure-1_3, enchanted_book-mending-1, enchanted_book-multishot-1, enchanted_book-piercing-1_4, enchanted_book-power-1_5, enchanted_book-projectile_protection-1_4, enchanted_book-protection-1_4, enchanted_book-punch-1_2, enchanted_book-quick_charge-1_3, enchanted_book-respiration-1_3, enchanted_book-riptide-1_3, enchanted_book-sharpness-1_5, enchanted_book-silk_touch-1, enchanted_book-smite-1_5, enchanted_book-soul_speed-1_3, enchanted_book-sweeping_edge-1_3, enchanted_book-thorns-1_3, enchanted_book-unbreaking-1_3 
+      use-droptable-id: simple_tier_a, enchanted_book-aqua_affinity-1, enchanted_book-bane_of_arthropods-1_5, enchanted_book-blast_protection-1_4, enchanted_book-channeling-1, enchanted_book-curse_of_binding-1, enchanted_book-curse_of_vanishing-1, enchanted_book-depth_strider-1_3, enchanted_book-efficiency-1_5, enchanted_book-feather_falling-1_4, enchanted_book-fire_aspect-1_2, enchanted_book-fire_protection-1_4, enchanted_book-flame-1, enchanted_book-fortune-1_3, enchanted_book-frost_walker-1_2, enchanted_book-impaling-1_5, enchanted_book-infinity-1, enchanted_book-knockback-1_2, enchanted_book-looting-1_3, enchanted_book-loyalty-1_3, enchanted_book-luck_of_the_sea-1_3, enchanted_book-lure-1_3, enchanted_book-mending-1, enchanted_book-multishot-1, enchanted_book-piercing-1_4, enchanted_book-power-1_5, enchanted_book-projectile_protection-1_4, enchanted_book-protection-1_4, enchanted_book-punch-1_2, enchanted_book-quick_charge-1_3, enchanted_book-respiration-1_3, enchanted_book-riptide-1_3, enchanted_book-sharpness-1_5, enchanted_book-silk_touch-1, enchanted_book-smite-1_5, enchanted_book-soul_speed-1_3, enchanted_book-sweeping_edge-1_3, enchanted_book-thorns-1_3, enchanted_book-unbreaking-1_3 
       minLevel: 51
       maxLevel: 75
 
@@ -583,9 +573,95 @@ custom-rules:
      entities:
        allowed-list: ['ZOMBIFIED_PIGLIN', 'PIGLIN', 'ENDERMAN']
     apply-settings:
-      use-droptable-id: tier_s_weapons, tier_s_armor, , enchanted_book-aqua_affinity-1, enchanted_book-bane_of_arthropods-1_5, enchanted_book-blast_protection-1_4, enchanted_book-channeling-1, enchanted_book-curse_of_binding-1, enchanted_book-curse_of_vanishing-1, enchanted_book-depth_strider-1_3, enchanted_book-efficiency-1_5, enchanted_book-feather_falling-1_4, enchanted_book-fire_aspect-1_2, enchanted_book-fire_protection-1_4, enchanted_book-flame-1, enchanted_book-fortune-1_3, enchanted_book-frost_walker-1_2, enchanted_book-impaling-1_5, enchanted_book-infinity-1, enchanted_book-knockback-1_2, enchanted_book-looting-1_3, enchanted_book-loyalty-1_3, enchanted_book-luck_of_the_sea-1_3, enchanted_book-lure-1_3, enchanted_book-mending-1, enchanted_book-multishot-1, enchanted_book-piercing-1_4, enchanted_book-power-1_5, enchanted_book-projectile_protection-1_4, enchanted_book-protection-1_4, enchanted_book-punch-1_2, enchanted_book-quick_charge-1_3, enchanted_book-respiration-1_3, enchanted_book-riptide-1_3, enchanted_book-sharpness-1_5, enchanted_book-silk_touch-1, enchanted_book-smite-1_5, enchanted_book-soul_speed-1_3, enchanted_book-sweeping_edge-1_3, enchanted_book-thorns-1_3, enchanted_book-unbreaking-1_3
+      use-droptable-id: simple_tier_s, enchanted_book-aqua_affinity-1, enchanted_book-bane_of_arthropods-1_5, enchanted_book-blast_protection-1_4, enchanted_book-channeling-1, enchanted_book-curse_of_binding-1, enchanted_book-curse_of_vanishing-1, enchanted_book-depth_strider-1_3, enchanted_book-efficiency-1_5, enchanted_book-feather_falling-1_4, enchanted_book-fire_aspect-1_2, enchanted_book-fire_protection-1_4, enchanted_book-flame-1, enchanted_book-fortune-1_3, enchanted_book-frost_walker-1_2, enchanted_book-impaling-1_5, enchanted_book-infinity-1, enchanted_book-knockback-1_2, enchanted_book-looting-1_3, enchanted_book-loyalty-1_3, enchanted_book-luck_of_the_sea-1_3, enchanted_book-lure-1_3, enchanted_book-mending-1, enchanted_book-multishot-1, enchanted_book-piercing-1_4, enchanted_book-power-1_5, enchanted_book-projectile_protection-1_4, enchanted_book-protection-1_4, enchanted_book-punch-1_2, enchanted_book-quick_charge-1_3, enchanted_book-respiration-1_3, enchanted_book-riptide-1_3, enchanted_book-sharpness-1_5, enchanted_book-silk_touch-1, enchanted_book-smite-1_5, enchanted_book-soul_speed-1_3, enchanted_book-sweeping_edge-1_3, enchanted_book-thorns-1_3, enchanted_book-unbreaking-1_3
       minLevel: 76
       maxLevel: 100
+   - enabled: true
+
+   name: 'Level 1-5 Ring'
+   conditions:
+     min-distance-from-spawn: 0
+     max-distance-from-spawn: 100
+   strategies:
+      weighted-random: true
+   apply-settings:
+      maxLevel: 5
+
+  - enabled: true
+    name: 'Level 5-10 Ring'
+    conditions:
+      min-distance-from-spawn: 101
+      max-distance-from-spawn: 250
+    strategies:
+      weighted-random: true
+    apply-settings:
+      minLevel: 5
+      maxLevel: 10
+
+  - enabled: true
+    name: 'Level 11-15 Ring'
+    conditions:
+      min-distance-from-spawn: 250
+      max-distance-from-spawn: 500
+    strategies:
+      weighted-random: true
+    apply-settings:
+      minLevel: 11
+      maxLevel: 15
+
+  - enabled: true
+    name: 'Level 15-20 Ring'
+    conditions:
+      min-distance-from-spawn: 500
+      max-distance-from-spawn: 750
+    strategies:
+      weighted-random: true
+    apply-settings:
+      minLevel: 15
+      maxLevel: 20      
+
+  - enabled: true
+    name: 'Level 20-25 Ring'
+    conditions:
+      min-distance-from-spawn: 750
+      max-distance-from-spawn: 1000
+    strategies:
+      weighted-random: true
+    apply-settings:
+      minLevel: 20
+      maxLevel: 25
+
+  - enabled: true
+    name: 'Level 25-40 Ring'
+    conditions:
+      min-distance-from-spawn: 1000
+      max-distance-from-spawn: 1500
+    strategies:
+      weighted-random: true
+    apply-settings:
+      minLevel: 25
+      maxLevel: 40
+
+  - enabled: true
+    name: 'Level 40-60 Ring'
+    conditions:
+      min-distance-from-spawn: 1500
+      max-distance-from-spawn: 2000
+    strategies:
+      weighted-random: true
+    apply-settings:
+      minLevel: 40
+      maxLevel: 60
+
+  - enabled: true
+    name: 'Level 60-100 Ring'
+    conditions:
+      min-distance-from-spawn: 2000
+    strategies:
+      weighted-random: true
+    apply-settings:
+      minLevel: 60
+      maxLevel: 100            
 
 # +-------------------------------------------------------------------------------------------LM3
 # +                                                                                          +LM3
