@@ -261,19 +261,19 @@ presets:
       maxLevel: 100
       multipliers:
         merge: false
-        max-health: 2.0
-        movement-speed: 0.5
-        attack-damage: 2.0
+        max-health: 5.0
+        movement-speed: 0.1
+        attack-damage: 1.0
         ranged-attack-damage: 1.0
         creeper-blast-damage: 0.5
         follow-range: 0.5
         item-drop: 5.0
-        xp-drop: 7.0
+        xp-drop: 10.0
         #Special Multipliers (0.0 Min - 1.0 Max)
-        armor-bonus: 0.5
-        armor-toughness: 0.5
-        attack-knockback: 0.5
-        knockback-resistance: 0.5
+        armor-bonus: 0.1
+        armor-toughness: 0.1
+        attack-knockback: 0.1
+        knockback-resistance: 0.1
         zombie-spawn-reinforcements: 0.15
 
       tiered-coloring:
@@ -340,8 +340,8 @@ default-rule:
     #- average_challenge
     #- advanced_challenge
     - extreme_challenge
-    - weighted_random_Levelling
-    #- spawn_Levelling
+    #- weighted_random_Levelling
+    - spawn_Levelling
     #- lvl-mod_spawn-blended
     #- ycoord_Levelling
     #- random_Levelling
@@ -388,7 +388,7 @@ default-rule:
 
     creature-death-nametag: '%tiered%Lvl %mob-lvl%&8 | &f%displayname%'
     death-messages:
-      3: ['%player% was killed by a %death_nametag%!']
+      #3: ['%player% was killed by a %death_nametag%!']
       1: ['A level %mob-lvl% %displayname% slaughtered %player%!']
     nametag-placeholder-levelled: ''
     nametag-placeholder-unlevelled: ''
@@ -423,244 +423,8 @@ default-rule:
 # +   https://github.com/lokka30/LevelledMobs/wiki/Documentation---rules.yml#custom-rules    +LM3
 # +                                                                                         +M3
 # +------------------------------------------------------------------------------------------LM3
-custom-rules:
-  - enabled: true
-    name: 'No Stat Change for Specific Entities'
-    use-preset: vanilla_challenge, nametag_no_level
-    conditions:
-      entities:
-        allowed-groups: ['all_passive_mobs']
-        allowed-list: ['BABY_', 'WANDERING_TRADER', 'VILLAGER', 'ZOMBIE_VILLAGER', 'BAT']
 
-  - enabled: true
-    name: 'Custom Nether Levelling'
-    conditions:
-      worlds: 'world_nether'
-    strategies:
-      y-coordinate:
-        start: 100
-        end: 40
-        period: 0
-      apply-settings:
-        minLevel: 10
-        maxLevel: 100
 
-  - enabled: true
-    name: 'CR - Difficulty Increase at Night'
-    use-preset: extreme_challenge
-    conditions:
-      apply-above-y: 62
-      world-time-tick: ['13000-24000']
-    apply-settings:
-      minLevel: 15
-        
-  - enabled: true
-    name: 'CR - Level Dependent Zombie Custom Names'
-    apply-settings:
-      entity-name-override:
-        1-25:
-          ZOMBIE: ['Teething %displayname%']
-        26-50:
-          ZOMBIE: ['Scratching %displayname%']
-        51-75:
-          ZOMBIE: ['Biting %displayname%']
-        76-100:
-          ZOMBIE: ['Hunting %displayname%']
-        BABY_ZOMBIE: ['Baby Undead']
-
-  - enabled: true
-    name: 'Custom End Levelling'
-    conditions:
-      worlds: 'world_the_end'
-    strategies:
-      distance-from-spawn:
-        increase-level-distance: 200
-        start-distance: 1000
-        spawn-location:
-          x: 0
-          z: 0
-        apply-settings:
-          minLevel: 25
-          maxLevel: 100
-
-  - enabled: true
-    name: 'Custom Entity Attributes'
-    apply-settings:
-      multipliers:
-        custom-mob-level:
-          ENDERMAN:
-            max-health: 0.5
-            movement-speed: 0.0
-          ENDERMITE:
-            max-health: 0.5
-            movement-speed: 0.0
-          SILVERFISH:
-            max-health: 0.5
-            movement-speed: 0.0
-          CREEPER:
-            movement-speed: 0.05
-
-  - enabled: true
-    name: 'Custom Entity Specific Levelling'
-    use-preset: basic_challenge
-    conditions:
-      entities: ['ZOMBIFIED_PIGLIN', 'SHULKER', 'VEX', 'RAVAGER', 'PHANTOM', 'PILLAGER']
-    strategies:
-      weighted-random: true
-    apply-settings:
-      maxLevel: 100
-      minlevel: 10
-        
-  - enabled: true
-    name: 'Custom Boss Entity Specific Levelling'
-    use-preset: extreme_challenge, nametag_no_level
-    conditions:
-      entities: ['ENDER_DRAGON', 'ELDER_GUARDIAN', 'WITHER', 'WARDEN']
-    strategies:
-      weighted-random: true
-    apply-settings:
-      maxLevel: 25
-      minLevel: 5
-      
-  - enabled: true
-    name: 'Spawner Cube Entities'
-    use-preset: basic_challenge
-    conditions:
-      allowed-spawn-reasons: ['SPAWNER']
-    strategies:
-      weighted-random: true
-    apply-settings:
-      maxLevel: 5
-      multipliers:
-        max-health: 0.0 #For Farms
-      entity-name-override:
-        all_entities: 'Spawner %displayname%'
-
-  - enabled: true
-    name: 'Drop Tables for LVL1-25'
-    conditions:
-     entities:
-       allowed-list: ['ZOMBIE', 'SKELETON', 'HUSK', 'DROWNED']
-    apply-settings:
-      use-droptable-id: simple_tier_c
-      minLevel: 1
-      maxLevel: 25
-
-  - enabled: true
-    name: 'Drop Tables for LVL26-50'
-    conditions:
-     entities:
-       allowed-list: ['ZOMBIE', 'SKELETON', 'HUSK', 'DROWNED', 'ZOMBIFIED_PIGLIN', 'PIGLIN']
-    apply-settings:
-      use-droptable-id: simple_tier_b
-      minLevel: 26
-      maxLevel: 50
-
-  - enabled: true
-    name: 'Drop Tables for LVL51-75'
-    conditions:
-     entities:
-       allowed-list: ['ZOMBIE', 'SKELETON', 'HUSK', 'DROWNED', 'ZOMBIFIED_PIGLIN', 'PIGLIN', 'ENDERMAN']
-    apply-settings:
-      use-droptable-id: simple_tier_a, enchanted_book-aqua_affinity-1, enchanted_book-bane_of_arthropods-1_5, enchanted_book-blast_protection-1_4, enchanted_book-channeling-1, enchanted_book-curse_of_binding-1, enchanted_book-curse_of_vanishing-1, enchanted_book-depth_strider-1_3, enchanted_book-efficiency-1_5, enchanted_book-feather_falling-1_4, enchanted_book-fire_aspect-1_2, enchanted_book-fire_protection-1_4, enchanted_book-flame-1, enchanted_book-fortune-1_3, enchanted_book-frost_walker-1_2, enchanted_book-impaling-1_5, enchanted_book-infinity-1, enchanted_book-knockback-1_2, enchanted_book-looting-1_3, enchanted_book-loyalty-1_3, enchanted_book-luck_of_the_sea-1_3, enchanted_book-lure-1_3, enchanted_book-mending-1, enchanted_book-multishot-1, enchanted_book-piercing-1_4, enchanted_book-power-1_5, enchanted_book-projectile_protection-1_4, enchanted_book-protection-1_4, enchanted_book-punch-1_2, enchanted_book-quick_charge-1_3, enchanted_book-respiration-1_3, enchanted_book-riptide-1_3, enchanted_book-sharpness-1_5, enchanted_book-silk_touch-1, enchanted_book-smite-1_5, enchanted_book-soul_speed-1_3, enchanted_book-sweeping_edge-1_3, enchanted_book-thorns-1_3, enchanted_book-unbreaking-1_3 
-      minLevel: 51
-      maxLevel: 75
-
-  - enabled: true
-    name: 'Drop Tables for LVL76-100'
-    conditions:
-     entities:
-       allowed-list: ['ZOMBIFIED_PIGLIN', 'PIGLIN', 'ENDERMAN']
-    apply-settings:
-      use-droptable-id: simple_tier_s, enchanted_book-aqua_affinity-1, enchanted_book-bane_of_arthropods-1_5, enchanted_book-blast_protection-1_4, enchanted_book-channeling-1, enchanted_book-curse_of_binding-1, enchanted_book-curse_of_vanishing-1, enchanted_book-depth_strider-1_3, enchanted_book-efficiency-1_5, enchanted_book-feather_falling-1_4, enchanted_book-fire_aspect-1_2, enchanted_book-fire_protection-1_4, enchanted_book-flame-1, enchanted_book-fortune-1_3, enchanted_book-frost_walker-1_2, enchanted_book-impaling-1_5, enchanted_book-infinity-1, enchanted_book-knockback-1_2, enchanted_book-looting-1_3, enchanted_book-loyalty-1_3, enchanted_book-luck_of_the_sea-1_3, enchanted_book-lure-1_3, enchanted_book-mending-1, enchanted_book-multishot-1, enchanted_book-piercing-1_4, enchanted_book-power-1_5, enchanted_book-projectile_protection-1_4, enchanted_book-protection-1_4, enchanted_book-punch-1_2, enchanted_book-quick_charge-1_3, enchanted_book-respiration-1_3, enchanted_book-riptide-1_3, enchanted_book-sharpness-1_5, enchanted_book-silk_touch-1, enchanted_book-smite-1_5, enchanted_book-soul_speed-1_3, enchanted_book-sweeping_edge-1_3, enchanted_book-thorns-1_3, enchanted_book-unbreaking-1_3
-      minLevel: 76
-      maxLevel: 100
-
-  - enabled: true
-    name: 'Level 1-5 Ring'
-    conditions:
-     min-distance-from-spawn: 0
-     max-distance-from-spawn: 100
-    strategies:
-      weighted-random: true
-    apply-settings:
-      maxLevel: 5
-
-  - enabled: true
-    name: 'Level 5-10 Ring'
-    conditions:
-      min-distance-from-spawn: 101
-      max-distance-from-spawn: 250
-    strategies:
-      weighted-random: true
-    apply-settings:
-      minLevel: 5
-      maxLevel: 10
-
-  - enabled: true
-    name: 'Level 11-15 Ring'
-    conditions:
-      min-distance-from-spawn: 250
-      max-distance-from-spawn: 500
-    strategies:
-      weighted-random: true
-    apply-settings:
-      minLevel: 11
-      maxLevel: 15
-
-  - enabled: true
-    name: 'Level 15-20 Ring'
-    conditions:
-      min-distance-from-spawn: 500
-      max-distance-from-spawn: 750
-    strategies:
-      weighted-random: true
-    apply-settings:
-      minLevel: 15
-      maxLevel: 20      
-
-  - enabled: true
-    name: 'Level 20-25 Ring'
-    conditions:
-      min-distance-from-spawn: 750
-      max-distance-from-spawn: 1000
-    strategies:
-      weighted-random: true
-    apply-settings:
-      minLevel: 20
-      maxLevel: 25
-
-  - enabled: true
-    name: 'Level 25-40 Ring'
-    conditions:
-      min-distance-from-spawn: 1000
-      max-distance-from-spawn: 1500
-    strategies:
-      weighted-random: true
-    apply-settings:
-      minLevel: 25
-      maxLevel: 40
-
-  - enabled: true
-    name: 'Level 40-60 Ring'
-    conditions:
-      min-distance-from-spawn: 1500
-      max-distance-from-spawn: 2000
-    strategies:
-      weighted-random: true
-    apply-settings:
-      minLevel: 40
-      maxLevel: 60
-
-  - enabled: true
-    name: 'Level 60-100 Ring'
-    conditions:
-      min-distance-from-spawn: 2000
-    strategies:
-      weighted-random: true
-    apply-settings:
-      minLevel: 60
-      maxLevel: 100            
 
 # +-------------------------------------------------------------------------------------------LM3
 # +                                                                                          +LM3
